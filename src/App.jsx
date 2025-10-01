@@ -57,7 +57,7 @@ function App() {
           className="display-3 fw-bold mb-3"
         >
           Hi, I'm{" "}
-          <span className="text-gradient">Chitti Babu</span>
+          <span className="text-gradient">Ganesh CEO</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
