@@ -32,4 +32,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_PATH }}/
           local-dir: dist/
-          method: ftp
+          # Removed 'method: ftp' as it's not a valid input for this version
