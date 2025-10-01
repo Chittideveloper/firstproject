@@ -3,7 +3,7 @@ name: Deploy React (Vite) to GoDaddy cPanel
 on:
   push:
     branches:
-      - main   # change if you use another branch
+      - main
 
 jobs:
   build-and-deploy:
@@ -21,8 +21,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Clear previous build
+        run: rm -rf dist
+
       - name: Build Vite app
         run: npm run build
+
+      - name: Verify build output
+        run: |
+          echo "Checking built files:"
+          ls -la dist/
+          echo "Checking HTML file:"
+          head -20 dist/index.html
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -32,4 +42,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_PATH }}/
           local-dir: dist/
-          # Removed 'method: ftp' as it's not a valid input for this version
